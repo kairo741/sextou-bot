@@ -1,13 +1,17 @@
 SEXTA_DOS_CRIAS_LYRICS = """
     ser bandido é bom demais
-    olha só o que ela faz quando vê a peça do paaaaaiii
+    olha só o que ela faz quando vê a  peça do paaaaaiii
     cai cai cai caaaii
-    na ???? do paiiii (2x)
+    na ???? do paiiii
+    caiii cai cai
+    na ???? do paiiii
+    cai cai cai caaaii
+    na ???? do paiiii
     
     ser bandido é bem demais
     olha só o que ela faz quando vê a peça do paaaaaiii
     cai cai cai caaaii
-    na ???? do paiiii (2x)
+    na ???? do paiiii
 """
 
 SEXTA_DOS_CRIAS_MP4 = "files/sexta_dos_crias.mp4"
