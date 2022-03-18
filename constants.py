@@ -1,18 +1,26 @@
 SEXTA_DOS_CRIAS_LYRICS = """
-    ser bandido é bom demais
-    olha só o que ela faz quando vê a  peça do paaaaaiii
-    cai cai cai caaaii
-    na ???? do paiiii
-    caiii cai cai
-    na ???? do paiiii
-    cai cai cai caaaii
-    na ???? do paiiii
+    AI AI AIAIAI 🔇 IAIAIAIAI 
     
-    ser bandido é bem demais
-    olha só o que ela faz quando vê a peça do paaaaaiii
-    cai cai cai caaaii
-    na ???? do paiiii
+    SER BANDIDO 🕵️ É BOM DEMAIS 😍 
+    OLHA SÓ O QUE ELA FAZ ✌️✌️ 
+    QUANDO VÊ A PEÇA DO PAAAAAIII  😈😈🔥
+    
+    CAI CAI CAI CAAAII
+    NA ???? DO PAIIII
+    
+    CAIII CAI CAI
+    NA ???? DO PAIIII
+    CAI CAI CAI CAAAII
+    NA ???? DO PAIIII
+    
+    SER BANDIDO 🕵️ É BOM DEMAIS 😍 
+    OLHA SÓ O QUE ELA FAZ ✌️✌️ 
+    QUANDO VÊ A PEÇA DO PAAAAAIII  😈😈🔥
+    
+    CAI CAI CAI CAAAII
+    NA ???? DO PAIIII
 """
+
 
 SEXTA_DOS_CRIAS_MP4 = "files/sexta_dos_crias.mp4"
 
