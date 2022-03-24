@@ -27,7 +27,7 @@ async def send_video(context, version="NORMAL"):
 
 
 @client.command("shrek")
-async def send_video(context):
+async def send_shrek(context):
     await context.send(file=discord.File(constants.SHREK_SEXTA_FEIRA_MP4))
 
 
