@@ -44,6 +44,15 @@ async def lyrics(context):
                             description=constants.SEXTA_DOS_CRIAS_LYRICS,
                             colour=discord.Colour.dark_blue())
     message.set_image(
+        url="https://c.tenor.com/yenNqRV0M2oAAAAC/sexta-sexta-feira.gif")
+    await context.send(embed=message)
+
+
+@client.command("avatar")
+async def send_avatar(context):
+    message = discord.Embed(title="Sextouu?",
+                            colour=discord.Colour.purple())
+    message.set_image(
         url="https://cdn.discordapp.com/avatars/954427348315418694/ea558ea1dc3ae7fbeba1476a0fe4eda2.png?size=2048")
     await context.send(embed=message)
 

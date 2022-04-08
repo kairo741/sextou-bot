@@ -21,9 +21,8 @@ SEXTA_DOS_CRIAS_LYRICS = """
     NA ???? DO PAIIII
 """
 
-
 SEXTA_DOS_CRIAS_MP4 = "files/sexta_dos_crias.mp4"
-
+SEXTA_DOS_CRIAS_GIF = "files/sexta_dos_crias_gif.gif"
 SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION = "files/sexta_dos_crias_complete_edition.mp4"
 
 SHREK_SEXTA_FEIRA_MP4 = "files/shrek_gracas_a_deus_e_sexta_feira.mp4"
