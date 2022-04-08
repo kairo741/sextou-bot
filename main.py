@@ -57,12 +57,7 @@ async def send_avatar(context):
     await context.send(embed=message)
 
 
-@client.command("author")
-async def send_to_info(context):
-    await send_author_info(context)
-
-
-@client.command("info")
+@client.command(aliases=['info', 'infos', 'author', 'authors', 'bot'])
 async def send_author_info(context):
     message = discord.Embed(title="Infos",
                             colour=discord.Colour.dark_red())
@@ -78,7 +73,7 @@ async def send_author_info(context):
                       inline=False)
 
     spotify_message = discord.Embed(title="“O cara do tambor bolha”💦",
-                               colour=discord.Colour.dark_red()).set_image(
+                                    colour=discord.Colour.dark_red()).set_image(
         url="https://yt3.ggpht.com/Y50i3LmM9Vqb2x_iI5sWnYLm7hYJ5nVk8nvktGZhuWNA5uFyXfqFyEN63ra7jbiPzVA4jxcY-ota=s640"
             "-c-fcrop64=1,00000000ffffffff-nd-v1")
     await context.send(embed=message)
