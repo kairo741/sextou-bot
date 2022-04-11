@@ -1,5 +1,6 @@
 SEXTA_DOS_CRIAS_LYRICS = """
     AI AI AIAIAI 🔇 IAIAIAIAI 
+    (SEGUUU 🗡🗡💨 RA)
     
     SER BANDIDO 🕵️ É BOM DEMAIS 😍 
     OLHA SÓ O QUE ELA FAZ ✌️✌️ 
