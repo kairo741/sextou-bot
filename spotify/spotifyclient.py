@@ -43,6 +43,17 @@ class SpotifyClient:
         except NameError:
             print(response_json)
 
+    def get_dj_ramons_albums(self):
+        url = f"https://api.spotify.com/v1/artists/{'4TU1r1V7Xp6Ov2X2irfm3J'}/albums"
+        response = self._place_get_api_request(url)
+        response_json = response.json()
+        try:
+            playlists = [playlist_class.Playlist(playlist["name"], playlist["id"]) for
+                         playlist in response_json["items"]]
+            return playlists
+        except NameError:
+            print(response_json)
+
     def create_playlist(self, name):
         data = json.dumps({
             "name": name,
