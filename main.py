@@ -111,7 +111,7 @@ async def create_playlist(context, playlist_name, *genres):
                 description=genres_message,
                 colour=discord.Colour.dark_green())
             await context.send(embed=message)
-            await context.send(f"Sua playlist: https://spotify.com/playlist/{playlist.id}")
+            await context.send(f"Sua playlist: https://open.spotify.com/playlist/{playlist.id}")
         else:
             await context.send("""AI AI AIAIAI 🔇 IAIAIAIAI\n(SEGUUU 🗡🗡💨 RA)\nUm ou mais gêneros não são válidos!""")
 
