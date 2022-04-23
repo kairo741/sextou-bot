@@ -1,6 +1,5 @@
 import json
 import os
-
 import requests
 import spotify.cover_image as cover_image
 
@@ -74,6 +73,17 @@ class SpotifyClient:
         response = self._place_post_api_request(url, data)
         response_json = response.json()
         return response_json
+
+    def validate_music_genres(self, genres):
+        url = "https://api.spotify.com/v1/recommendations/available-genre-seeds"
+        response = self._place_get_api_request(url)
+        response_json = response.json()
+        available_genres = response_json['genres']
+        received_genres = genres.split(",")
+        for genre in received_genres:
+            if genre not in available_genres:
+                return False
+        return True
 
     def _place_get_api_request(self, url):
         response = requests.get(

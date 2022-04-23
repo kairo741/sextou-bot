@@ -91,19 +91,25 @@ async def create_playlist(context, playlist_name, *genres):
     if genres is not None:
         genres = re.sub("\!|\'|\?|,| |", "", genres)
         genres = genres.replace("°", ",")
+        genres = ','    .join(list(dict.fromkeys(genres.split(','))))
 
-    recommended_tracks = spotify_client.get_track_recommendations(genres)
-    playlist = spotify_client.create_playlist(playlist_name)
-    spotify_client.populate_playlist(playlist, recommended_tracks)
-    genres_message = ""
-    for genre in genres.split(","):
-        genres_message += f"• {genre.capitalize()}\n"
+    if spotify_client.validate_music_genres(genres):
+        recommended_tracks = spotify_client.get_track_recommendations(genres)
+        playlist = spotify_client.create_playlist(playlist_name)
+        spotify_client.populate_playlist(playlist, recommended_tracks)
+        genres_message = ""
+        genres = genres.split(",")
+        for genre in genres:
+            genres_message += f"• {genre.capitalize()}\n"
 
-    message = discord.Embed(title="Gêneros escolhidos",
-                            description=genres_message,
-                            colour=discord.Colour.dark_green())
-    await context.send(embed=message)
-    await context.send(f"Sua playlist: https://open.spotify.com/playlist/{playlist.id}")
+        message = discord.Embed(
+            title=f"Gênero{'s' if len(genres) > 1 else ''} escolhido{'s' if len(genres) > 1 else ''}",
+            description=genres_message,
+            colour=discord.Colour.dark_green())
+        await context.send(embed=message)
+        await context.send(f"Sua playlist: https://open.spotify.com/playlist/{playlist.id}")
+    else:
+        await context.send("""AI AI AIAIAI 🔇 IAIAIAIAI\n(SEGUUU 🗡🗡💨 RA)\nUm ou mais gêneros não são válidos!""")
 
 
 client.run(os.environ["BOT_TOKEN"])
