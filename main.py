@@ -1,10 +1,12 @@
 import os
-from random import choice
+import re
 
+from random import choice
 import discord
 import ascii
 import constants
 from discord.ext import commands
+from spotify import spotifyclient
 
 client = commands.Bot(command_prefix="$ ")
 
@@ -78,6 +80,30 @@ async def send_author_info(context):
             "-c-fcrop64=1,00000000ffffffff-nd-v1")
     await context.send(embed=message)
     await context.send(embed=spotify_message)
+
+
+@client.command("playlist")
+async def create_playlist(context, playlist_name, *genres):
+    spotify_client = spotifyclient.SpotifyClient(os.environ["SPOTIFY_AUTHORIZATION_TOKEN"])
+    # last_tracks = spotify_client.get_last_played_tracks(number_of_tracks)
+
+    genres = '°'.join(genres)
+    if genres is not None:
+        genres = re.sub("\!|\'|\?|,| |", "", genres)
+        genres = genres.replace("°", ",")
+
+    recommended_tracks = spotify_client.get_track_recommendations(genres)
+    playlist = spotify_client.create_playlist(playlist_name)
+    spotify_client.populate_playlist(playlist, recommended_tracks)
+    genres_message = ""
+    for genre in genres.split(","):
+        genres_message += f"• {genre.capitalize()}\n"
+
+    message = discord.Embed(title="Gêneros escolhidos",
+                            description=genres_message,
+                            colour=discord.Colour.dark_green())
+    await context.send(embed=message)
+    await context.send(f"Sua playlist: https://open.spotify.com/playlist/{playlist.id}")
 
 
 client.run(os.environ["BOT_TOKEN"])
