@@ -82,6 +82,14 @@ async def send_author_info(context):
     await context.send(embed=spotify_message)
 
 
+@client.command("sexta?")
+async def is_sexta(context):
+    await context.send(choice([constants.IS_SEXTA_1, constants.IS_SEXTA_2,
+                               constants.IS_SEXTA_3, constants.IS_SEXTA_4,
+                               constants.IS_SEXTA_5, constants.IS_SEXTA_6,
+                               constants.IS_SEXTA_7]))
+
+
 @client.command("playlist")
 async def create_playlist(context, playlist_name, *genres):
     spotify_client = spotifyclient.SpotifyClient(os.environ["SPOTIFY_AUTHORIZATION_TOKEN"])
