@@ -8,7 +8,7 @@ import constants
 from discord.ext import commands
 from spotify import spotifyclient
 
-client = commands.Bot(command_prefix="$ ")
+client = commands.Bot(command_prefix="$ ", intents=discord.Intents.all())
 
 
 @client.event
