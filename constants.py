@@ -36,6 +36,31 @@ ME_DESC = """🐦 @KairoAmorim
 📧 kairo.amorim2001@gmail.com
 🐙 https://github.com/kairo741"""
 
+HELP_MESSAGE = """
+:fire: Comandos :fire:
+
+Prefixo = $    ⌲ = Comando    ⌇ = Paramêtro Opcional
+
+⌲ sextou ⌇complete⌇
+❂ Sextouuuu
+	    		❂ Versão completa
+
+⌲ lyrics		❂ Letra da música
+
+⌲ shrek		    ❂ Vídeo Shrek
+
+⌲ message		❂ ASCII aleatório desenhando "Sextou"
+
+⌲ sexta?		❂ Memes boomers horriveis de sextou
+
+⌲ playlist		❂ Cria uma playlist no Spotify (off)
+        ⌇ gênero (rock, pop, metal...)
+
+⌲ help		    ❂ Manda essa mensagem
+
+⌲ info, infos, author, authors, bot
+"""
+
 SEXTA_DOS_CRIAS_MP4 = "files/sexta_dos_crias.mp4"
 SEXTA_DOS_CRIAS_GIF = "files/sexta_dos_crias_gif.gif"
 SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION = "files/sexta_dos_crias_complete_edition.mp4"

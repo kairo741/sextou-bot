@@ -1,6 +1,6 @@
 import os
 import re
-
+import command
 from random import choice
 import discord
 import ascii
@@ -8,7 +8,7 @@ import constants
 from discord.ext import commands
 from spotify import spotifyclient
 
-client = commands.Bot(command_prefix="$ ", intents=discord.Intents.all())
+client = commands.Bot(command_prefix="$ ", intents=discord.Intents.all(), help_command=None)
 
 
 @client.event
@@ -88,6 +88,19 @@ async def is_sexta(context):
                                constants.IS_SEXTA_3, constants.IS_SEXTA_4,
                                constants.IS_SEXTA_5, constants.IS_SEXTA_6,
                                constants.IS_SEXTA_7]))
+
+
+@client.command("help")
+async def help_message(context):
+    message = discord.Embed(title="Comandos",
+                            colour=discord.Colour.dark_red())
+
+    for com in command.get_help_commands():
+        message.add_field(name=f'$ {com.name}',
+                          value=f"{com.description}",
+                          inline=True)
+
+    await context.send(embed=message)
 
 
 @client.command("playlist")
