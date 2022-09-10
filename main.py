@@ -92,12 +92,26 @@ async def is_sexta(context):
 
 @client.command("help")
 async def help_message(context):
-    message = discord.Embed(title="Comandos",
+    message = discord.Embed(title="Comandos 🗡🗡💨",
                             colour=discord.Colour.dark_red())
 
     for com in command.get_help_commands():
+        description = f"❂ {com.description}"
+
+        if com.parameters is not None:
+            description += "\n ❂ Parâmetros opcionais: "
+            for ad_param in com.parameters:
+                description += f'{ad_param}, '
+            description = description[0: len(description) - 2]
+
+        if com.aliases is not None:
+            description += "\n ❂ Outros nomes desse comando: "
+            for alias in com.aliases:
+                description += f'{alias}, '
+            description = description[0: len(description) - 2]
+
         message.add_field(name=f'$ {com.name}',
-                          value=f"{com.description}",
+                          value=description,
                           inline=True)
 
     await context.send(embed=message)

@@ -1,5 +1,14 @@
 def get_help_commands():
-    return [Command("sextou", "Sextouuuu", ["complete"], None), Command("lyrics", "Letra da música", None, None)]
+    return [
+        Command("sextou", "Sextouuuu 🔥", ["complete"], None),
+        Command("lyrics", "Letra da música", None, None),
+        Command("shrek", "Graças a Deus é sexta-feira", None, None),
+        Command("message", "ASCII aleatório desenhando \"Sextou\"", None, None),
+        Command("sexta?", "Memes boomers horríveis de sextou", None, None),
+        Command("playlist", "(off) Cria uma playlist no Spotify", ["rock", "pop", "metal", "etc"], None),
+        Command("help", "Manda essa mensagem", None, None),
+        Command("info", "Infos sobre o bot", None, ["infos", "author", "authors", "bot"]),
+    ]
 
 
 class Command:
