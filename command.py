@@ -5,8 +5,8 @@ def get_help_commands():
         Command("shrek", "Graças a Deus é sexta-feira", None, None),
         Command("message", "ASCII aleatório desenhando \"Sextou\"", None, None),
         Command("sexta?", "Memes boomers horríveis de sextou", None, None),
-        Command("playlist", "(off) Cria uma playlist no Spotify", ["rock", "pop", "metal", "etc"], None),
         Command("help", "Manda essa mensagem", None, None),
+        Command("playlist", "(off) Cria uma playlist no Spotify", ["rock", "pop", "metal", "etc"], None),
         Command("info", "Infos sobre o bot", None, ["infos", "author", "authors", "bot"]),
     ]
 
