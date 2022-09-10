@@ -93,7 +93,7 @@ async def is_sexta(context):
 @client.command("help")
 async def help_message(context):
     message = discord.Embed(title="Comandos 🗡🗡💨",
-                            colour=discord.Colour.dark_red())
+                            colour=discord.Colour.dark_purple())
 
     for com in command.get_help_commands():
         description = f"❂ {com.description}"
