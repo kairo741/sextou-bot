@@ -33,6 +33,11 @@ async def send_shrek(context):
     await context.send(file=discord.File(constants.SHREK_SEXTA_FEIRA_MP4))
 
 
+@client.command("fring")
+async def send_fring(context):
+    await context.send(file=discord.File(constants.FRING_FRIDAY_MP4))
+
+
 @client.command("message")
 async def send_message(context):
     message = choice(

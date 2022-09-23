@@ -42,6 +42,8 @@ SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION = "files/sexta_dos_crias_complete_edition.m
 
 SHREK_SEXTA_FEIRA_MP4 = "files/shrek_gracas_a_deus_e_sexta_feira.mp4"
 
+FRING_FRIDAY_MP4 = "files/fring_friday.mp4"
+
 IS_SEXTA_1 = "https://pbs.twimg.com/media/FRiP4e0XIAM3W31?format=jpg&name=small"
 IS_SEXTA_2 = "https://pbs.twimg.com/media/FRiVYqRWQAA0EoD?format=jpg&name=small"
 IS_SEXTA_3 = "https://marciatravessoni.com.br/wp-content/uploads/2021/06/O-que-e-cringe-eu-sou-cringe.jpg"
