@@ -1,14 +1,16 @@
 import os
 import re
-import command
 from random import choice
+
 import discord
-import ascii
-import constants
 from discord.ext import commands
+
+import ascii
+import command
+import constants
 from spotify import spotifyclient
 
-client = commands.Bot(command_prefix="$ ", intents=discord.Intents.all(), help_command=None)
+client = commands.Bot(command_prefix=commands.when_mentioned_or("$ "), intents=discord.Intents.all(), help_command=None)
 
 
 @client.event
@@ -17,6 +19,12 @@ async def on_ready():
         activity=discord.Streaming(name="SEXTA DOS CRIAS",
                                    url="https://www.youtube.com/watch?v=6zF3H1vH-6g",
                                    platform="Sexta"))
+    try:
+        synced = await client.tree.sync()
+        print(f'{len(synced)} slash commands foram sincronizados')
+    except Exception as e:
+        print(e)
+
     print(choice([ascii.SEXTOU_1, ascii.SEXTOU_2, ascii.SEXTOU_3, ascii.SEXTOU_4]))
 
 
@@ -28,24 +36,30 @@ async def send_video(context, version="NORMAL"):
         await context.send(file=discord.File(constants.SEXTA_DOS_CRIAS_MP4))
 
 
-@client.command("shrek")
+@client.hybrid_command(name="test", with_app_command=True, description="Testing")
+async def test(ctx: commands.Context):
+    await ctx.defer(ephemeral=True)
+    await ctx.reply("hi!")
+
+
+@client.hybrid_command(name="shrek", with_app_command=True, description="Graças a Deus é sexta-feira")
 async def send_shrek(context):
     await context.send(file=discord.File(constants.SHREK_SEXTA_FEIRA_MP4))
 
 
-@client.command("fring")
+@client.hybrid_command(name="fring", with_app_command=True, description="Holy shit it's fring friday")
 async def send_fring(context):
     await context.send(file=discord.File(constants.FRING_FRIDAY_MP4))
 
 
-@client.command("message")
+@client.hybrid_command(name="message", with_app_command=True, description="ASCII aleatório desenhando \"Sextou\"")
 async def send_message(context):
     message = choice(
         [ascii.SEXTOU_1, ascii.SEXTOU_2, ascii.SEXTOU_3, ascii.SEXTOU_4])
     await context.send(message)
 
 
-@client.command("lyrics")
+@client.hybrid_command(name="lyrics", with_app_command=True, description="AI AI AIAIAI 🔇 IAIAIAIAI ")
 async def lyrics(context):
     message = discord.Embed(title="Sexta dos crias",
                             description=constants.SEXTA_DOS_CRIAS_LYRICS,
@@ -95,7 +109,7 @@ async def is_sexta(context):
                                constants.IS_SEXTA_7]))
 
 
-@client.command("help")
+@client.hybrid_command(name="help", with_app_command=True, description="Exibe os todos os comandos")
 async def help_message(context):
     message = discord.Embed(title="Comandos 🗡🗡💨",
                             colour=discord.Colour.dark_purple())

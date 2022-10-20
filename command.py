@@ -3,6 +3,7 @@ def get_help_commands():
         Command("sextou", "Sextouuuu 🔥", ["complete"], None),
         Command("lyrics", "Letra da música", None, None),
         Command("shrek", "Graças a Deus é sexta-feira", None, None),
+        Command("fring", "Holy shit It's Fring Friday", None, None),
         Command("message", "ASCII aleatório desenhando \"Sextou\"", None, None),
         Command("sexta?", "Memes boomers horríveis de sextou", None, None),
         Command("help", "Manda essa mensagem", None, None),
