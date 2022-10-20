@@ -28,7 +28,8 @@ async def on_ready():
     print(choice([ascii.SEXTOU_1, ascii.SEXTOU_2, ascii.SEXTOU_3, ascii.SEXTOU_4]))
 
 
-@client.command("sextou")
+@client.hybrid_command(name="sextou", with_app_command=True, description="Sextouuu")
+@discord.app_commands.describe(version="Versão do video (NORMAL ou COMPLETE)")
 async def send_video(context, version="NORMAL"):
     if version.upper() == "COMPLETE":
         await context.send(file=discord.File(constants.SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION))
