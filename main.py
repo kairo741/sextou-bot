@@ -17,7 +17,7 @@ client = commands.Bot(command_prefix=commands.when_mentioned_or("$ "), intents=d
 async def on_ready():
     await client.change_presence(
         activity=discord.Streaming(name="SEXTA DOS CRIAS",
-                                   url="https://www.youtube.com/watch?v=6zF3H1vH-6g",
+                                   url=constants.YT_1HOUR_URL,
                                    platform="Sexta"))
     try:
         synced = await client.tree.sync()
@@ -58,8 +58,7 @@ async def lyrics(context):
     message = discord.Embed(title="Sexta dos crias",
                             description=constants.SEXTA_DOS_CRIAS_LYRICS,
                             colour=discord.Colour.dark_blue())
-    message.set_image(
-        url="https://c.tenor.com/yenNqRV0M2oAAAAC/sexta-sexta-feira.gif")
+    message.set_image(url=constants.SEXTOU_LYRICS_GIF)
     await context.send(embed=message)
 
 
@@ -67,8 +66,7 @@ async def lyrics(context):
 async def send_avatar(context):
     message = discord.Embed(title="Sextouu?",
                             colour=discord.Colour.purple())
-    message.set_image(
-        url="https://cdn.discordapp.com/avatars/954427348315418694/ea558ea1dc3ae7fbeba1476a0fe4eda2.png?size=2048")
+    message.set_image(url=constants.SEXTOU_AVATAR)
     await context.send(embed=message)
 
 
@@ -89,8 +87,7 @@ async def send_author_info(context):
 
     spotify_message = discord.Embed(title="“O cara do tambor bolha”💦",
                                     colour=discord.Colour.dark_red()).set_image(
-        url="https://yt3.ggpht.com/Y50i3LmM9Vqb2x_iI5sWnYLm7hYJ5nVk8nvktGZhuWNA5uFyXfqFyEN63ra7jbiPzVA4jxcY-ota=s640"
-            "-c-fcrop64=1,00000000ffffffff-nd-v1")
+        url=constants.DJ_RAMON_SUCESSO_SPOTIFY_PIC)
     await context.send(embed=message)
     await context.send(embed=spotify_message)
 

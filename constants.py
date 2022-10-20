@@ -32,6 +32,10 @@ DJ_RAMON_SUCESSO_DESC = """🐦 @djramonsucesso
 ⚫ https://tidal.com/browse/artist/22372654
 ♪ https://www.tiktok.com/@djramonsucessoofc"""
 
+DJ_RAMON_SUCESSO_SPOTIFY_PIC = "https://yt3.ggpht.com" \
+                               "/Y50i3LmM9Vqb2x_iI5sWnYLm7hYJ5nVk8nvktGZhuWNA5uFyXfqFyEN63ra7jbiPzVA4jxcY-ota=s640" \
+                               "-c-fcrop64=1,00000000ffffffff-nd-v1"
+
 ME_DESC = """🐦 @KairoAmorim
 📧 kairo.amorim2001@gmail.com
 🐙 https://github.com/kairo741"""
@@ -43,6 +47,11 @@ SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION = "files/sexta_dos_crias_complete_edition.m
 SHREK_SEXTA_FEIRA_MP4 = "files/shrek_gracas_a_deus_e_sexta_feira.mp4"
 
 FRING_FRIDAY_MP4 = "files/fring_friday.mp4"
+
+SEXTOU_LYRICS_GIF = "https://c.tenor.com/yenNqRV0M2oAAAAC/sexta-sexta-feira.gif"
+SEXTOU_AVATAR = "https://cdn.discordapp.com/avatars/954427348315418694/ea558ea1dc3ae7fbeba1476a0fe4eda2.png?size=2048"
+
+YT_1HOUR_URL = "https://www.youtube.com/watch?v=6zF3H1vH-6g"
 
 IS_SEXTA_1 = "https://pbs.twimg.com/media/FRiP4e0XIAM3W31?format=jpg&name=small"
 IS_SEXTA_2 = "https://pbs.twimg.com/media/FRiVYqRWQAA0EoD?format=jpg&name=small"
