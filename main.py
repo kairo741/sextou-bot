@@ -36,12 +36,6 @@ async def send_video(context, version="NORMAL"):
         await context.send(file=discord.File(constants.SEXTA_DOS_CRIAS_MP4))
 
 
-@client.hybrid_command(name="test", with_app_command=True, description="Testing")
-async def test(ctx: commands.Context):
-    await ctx.defer(ephemeral=True)
-    await ctx.reply("hi!")
-
-
 @client.hybrid_command(name="shrek", with_app_command=True, description="Graças a Deus é sexta-feira")
 async def send_shrek(context):
     await context.send(file=discord.File(constants.SHREK_SEXTA_FEIRA_MP4))
