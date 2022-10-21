@@ -4,6 +4,7 @@ from random import choice
 
 import discord
 from discord.ext import commands
+from pyfiglet import figlet_format
 
 import ascii
 import command
@@ -25,7 +26,8 @@ async def on_ready():
     except Exception as e:
         print(e)
 
-    print(choice([ascii.SEXTOU_1, ascii.SEXTOU_2, ascii.SEXTOU_3, ascii.SEXTOU_4]))
+    # print(choice([ascii.SEXTOU_1, ascii.SEXTOU_2, ascii.SEXTOU_3, ascii.SEXTOU_4]))
+    print(figlet_format('SEXTOU', font=choice(ascii.ASCII_FONTS)))
 
 
 @client.hybrid_command(name="sextou", with_app_command=True, description="Sextouuu")
@@ -59,8 +61,9 @@ async def send_fring(context):
 
 @client.hybrid_command(name="message", with_app_command=True, description="ASCII aleatório desenhando \"Sextou\"")
 async def send_message(context):
-    message = choice(
-        [ascii.SEXTOU_1, ascii.SEXTOU_2, ascii.SEXTOU_3, ascii.SEXTOU_4])
+    # message = choice(
+    #     [ascii.SEXTOU_1, ascii.SEXTOU_2, ascii.SEXTOU_3, ascii.SEXTOU_4])
+    message = f"```{figlet_format('SEXTOU', font=choice(ascii.ASCII_FONTS))}```"
     await context.send(message)
 
 
