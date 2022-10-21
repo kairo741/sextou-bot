@@ -46,6 +46,10 @@ SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION = "files/sexta_dos_crias_complete_edition.m
 
 SHREK_SEXTA_FEIRA_MP4 = "files/shrek_gracas_a_deus_e_sexta_feira.mp4"
 
+URSO_DA_SEXTA_MP4 = "files/urso_da_sexta.mp4"
+
+ROCKERS_SEXTOU_MP4 = "files/rockers_sextou.mp4"
+
 FRING_FRIDAY_MP4 = "files/fring_friday.mp4"
 
 SEXTOU_LYRICS_GIF = "https://c.tenor.com/yenNqRV0M2oAAAAC/sexta-sexta-feira.gif"

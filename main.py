@@ -42,6 +42,16 @@ async def send_shrek(context):
     await context.send(file=discord.File(constants.SHREK_SEXTA_FEIRA_MP4))
 
 
+@client.hybrid_command(name="urso", with_app_command=True, description="Urso da semana da sexta")
+async def send_shrek(context):
+    await context.send(file=discord.File(constants.URSO_DA_SEXTA_MP4))
+
+
+@client.hybrid_command(name="rockers", with_app_command=True, description="Rooockkkkers SEXTOoOoUuU")
+async def send_shrek(context):
+    await context.send(file=discord.File(constants.ROCKERS_SEXTOU_MP4))
+
+
 @client.hybrid_command(name="fring", with_app_command=True, description="Holy shit it's fring friday")
 async def send_fring(context):
     await context.send(file=discord.File(constants.FRING_FRIDAY_MP4))
