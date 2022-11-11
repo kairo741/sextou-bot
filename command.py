@@ -13,6 +13,9 @@ def get_help_commands():
         Command("avatar", "Envia a foto de perfil do bot", None, None),
         Command("playlist", "(off) Cria uma playlist no Spotify", ["rock", "pop", "metal", "etc"], None),
         Command("info", "Infos sobre o bot", None, ["infos", "author", "authors", "bot"]),
+        Command("play", "Sexta dos crias no voice chat", None, None),
+        Command("stop", "Para de tocar enquanto está no voice", None, None),
+        Command("leave", "Sai do voice chat", None, None),
     ]
 
 

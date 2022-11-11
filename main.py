@@ -123,10 +123,10 @@ async def is_sexta(context):
 async def help_message(context):
     message = discord.Embed(title="Comandos 🗡🗡💨",
                             colour=discord.Colour.dark_purple())
+    message.set_footer(text="AI AI AIAIAI 🔇 IAIAIAIAI \n(SEGUUU 🗡🗡💨 RA)")
 
     for com in command.get_help_commands():
         description = f"❂ {com.description}"
-
         if com.parameters is not None:
             description += "\n ❂ Parâmetros opcionais: "
             for ad_param in com.parameters:
@@ -179,5 +179,55 @@ async def create_playlist(context, playlist_name, *genres):
         else:
             await context.send("""AI AI AIAIAI 🔇 IAIAIAIAI\n(SEGUUU 🗡🗡💨 RA)\nUm ou mais gêneros não são válidos!""")
 
+
+# region Voice chat
+
+@client.hybrid_command(name="play", with_app_command=True, description="Sexta dos crias no chat de voz")
+async def play_sextou(context):
+    await play_sound(constants.SEXTA_DOS_CRIAS_SOUND_MP3, context)
+
+
+async def play_sound(file_name, context):
+    connect = True
+    connected_channel = discord.utils.get(client.voice_clients,
+                                          guild=context.guild)
+
+    if connected_channel is None:
+        connect = await join_channel(context)
+
+    if connect:
+        channel = discord.utils.get(client.voice_clients, guild=context.guild)
+        channel.play(
+            discord.FFmpegPCMAudio(executable=constants.FFMPEG_PATH,
+                                   source=file_name))
+        return True
+    else:
+        await context.send("Você deve estar conectado a um canal de voz")
+
+
+async def join_channel(context):
+    author_voice = context.message.author.voice
+    if author_voice is not None:
+        await author_voice.channel.connect()
+        return True
+    else:
+        return False
+
+
+@client.hybrid_command(name="leave", with_app_command=True, description="Sai do chat de voz")
+async def disconnect(context):
+    channel = discord.utils.get(client.voice_clients, guild=context.guild)
+    if channel is not None:
+        await channel.disconnect(force=True)
+
+
+@client.hybrid_command(name="stop", with_app_command=True, description="Para o som que estiver tocando no chat de voz")
+async def stop_playing(context):
+    channel = discord.utils.get(client.voice_clients, guild=context.guild)
+    if channel is not None:
+        channel.stop()
+
+
+# endregion
 
 client.run(os.environ["BOT_TOKEN"])
