@@ -3,6 +3,7 @@ import re
 from random import choice
 
 import discord
+from discord.ui import Select, View
 from discord.ext import commands
 from pyfiglet import figlet_format
 
@@ -124,8 +125,16 @@ async def help_message(context):
     message = discord.Embed(title="Comandos 🗡🗡💨",
                             colour=discord.Colour.dark_purple())
     message.set_footer(text="AI AI AIAIAI 🔇 IAIAIAIAI \n(SEGUUU 🗡🗡💨 RA)")
+    options = []
 
     for com in command.get_help_commands():
+        options.append(
+            discord.SelectOption(
+                label=com.name,
+                description=com.description
+            )
+        )
+
         description = f"❂ {com.description}"
         if com.parameters is not None:
             description += "\n ❂ Parâmetros opcionais: "
@@ -143,7 +152,30 @@ async def help_message(context):
                           value=description,
                           inline=True)
 
-    await context.send(embed=message)
+    select = Select(placeholder="Escolha um comando",
+                    min_values=1,
+                    max_values=1,
+                    options=options)
+
+    async def my_callback(interaction):
+        cmd = client.get_command(select.values[0])
+        try:
+            can_run = await cmd.can_run(context)
+            if can_run:
+                await context.invoke(cmd)
+            else:
+                context.send("Esse comando não pode ser executado pelo menu, tente com o prefixo $ ")
+        except:
+            context.send("Esse comando não pode ser executado pelo menu, tente com o prefixo $ ")
+
+        await interaction.response.defer()  # comando para responder a mensagem e não causar falha na interação
+
+    select.callback = my_callback
+    view = View()
+    view.add_item(select)
+    view.on_error = None
+
+    await context.send(embed=message, view=view)
 
 
 @client.command("playlist")
