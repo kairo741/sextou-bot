@@ -41,6 +41,7 @@ ME_DESC = """🐦 @KairoAmorim
 🐙 https://github.com/kairo741"""
 
 SEXTA_DOS_CRIAS_MP4 = "files/sexta_dos_crias.mp4"
+SEXTA_DOS_CRIAS_SOUND_MP3 = "files/sexta_dos_crias_sound.mp3"
 SEXTA_DOS_CRIAS_GIF = "files/sexta_dos_crias_gif.gif"
 SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION = "files/sexta_dos_crias_complete_edition.mp4"
 
