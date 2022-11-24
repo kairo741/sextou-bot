@@ -38,7 +38,8 @@ DJ_RAMON_SUCESSO_SPOTIFY_PIC = "https://yt3.ggpht.com" \
 
 ME_DESC = """[🐦 @KairoAmorim](https://twitter.com/KairoAmorim)
 [📧 kairo.amorim2001@gmail.com](mailto:kairo.amorim2001@gmail.com)
-[🐙 GitHub](https://github.com/kairo741)"""
+[🐙 GitHub](https://github.com/kairo741)
+[🤙 Server do Bot](https://discord.gg/5d8eqqkC)"""
 
 SEXTA_DOS_CRIAS_MP4 = "files/sexta_dos_crias.mp4"
 SEXTA_DOS_CRIAS_SOUND_MP3 = "files/sexta_dos_crias_sound.mp3"

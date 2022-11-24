@@ -129,7 +129,12 @@ async def send_hexa(context):
 async def help_message(context):
     message = discord.Embed(title="Comandos 🗡🗡💨",
                             colour=discord.Colour.dark_purple())
-    message.set_footer(text="AI AI AIAIAI 🔇 IAIAIAIAI \n(SEGUUU 🗡🗡💨 RA)")
+    message.set_footer(text="AI AI AIAIAI 🔇 IAIAIAIAI \n(SEGUUU 🗡🗡💨 RA) \nhttps://discord.gg/5d8eqqkC")
+
+    message.add_field(name='Server do bot',
+                      value="Qualquer duvida ou curiosidade, [suporte do bot](https://discord.gg/5d8eqqkC): "
+                            "https://discord.gg/5d8eqqkC",
+                      inline=False)
     options = []
 
     for com in command.get_help_commands():
