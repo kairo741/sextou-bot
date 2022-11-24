@@ -120,6 +120,11 @@ async def is_sexta(context):
                                constants.IS_SEXTA_7]))
 
 
+@client.hybrid_command(name="hexa", with_app_command=True, description="Hexa dos Crias")
+async def send_hexa(context):
+    await context.send(file=discord.File(constants.HEXA_DOS_CRIAS_MP4))
+
+
 @client.hybrid_command(name="help", with_app_command=True, description="Exibe os todos os comandos")
 async def help_message(context):
     message = discord.Embed(title="Comandos 🗡🗡💨",

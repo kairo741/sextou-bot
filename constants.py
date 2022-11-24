@@ -53,6 +53,8 @@ ROCKERS_SEXTOU_MP4 = "files/rockers_sextou.mp4"
 
 FRING_FRIDAY_MP4 = "files/fring_friday.mp4"
 
+HEXA_DOS_CRIAS_MP4 = "files/hexa_dos_crias_low_bitrate_compressed.mp4"
+
 SEXTOU_LYRICS_GIF = "https://c.tenor.com/yenNqRV0M2oAAAAC/sexta-sexta-feira.gif"
 SEXTOU_AVATAR = "https://cdn.discordapp.com/avatars/954427348315418694/ea558ea1dc3ae7fbeba1476a0fe4eda2.png?size=2048"
 
