@@ -22,23 +22,23 @@ SEXTA_DOS_CRIAS_LYRICS = """
     NA ???? DO PAIIII
 """
 
-DJ_RAMON_SUCESSO_DESC = """🐦 @djramonsucesso
-☎ CONTRATE JÁ: (21) 98024-6523/ (21)98251-1319
-▶ https://www.youtube.com/channel/UCozKPD9B3h4opITRE1Wd-Ow
-☁ https://soundcloud.com/ramon-sucesso22
-📷 https://www.instagram.com/djramonsucessofc/
-🎶 https://open.spotify.com/artist/4TU1r1V7Xp6Ov2X2irfm3J
-🛒 https://music.amazon.com.br/artists/B08P747KY2/dj-ramon-sucesso
-⚫ https://tidal.com/browse/artist/22372654
-♪ https://www.tiktok.com/@djramonsucessoofc"""
+DJ_RAMON_SUCESSO_DESC = """☎ CONTRATE JÁ: (21) 98024-6523/ (21)98251-1319
+[🐦 @djramonsucesso](https://twitter.com/djramonsucesso)
+[▶ YouTube](https://www.youtube.com/channel/UCozKPD9B3h4opITRE1Wd-Ow)
+[☁ SoundCloud](https://soundcloud.com/ramon-sucesso22)
+[📷 Instagram](https://www.instagram.com/djramonsucessofc/)
+[🎶 Spotify](https://open.spotify.com/artist/4TU1r1V7Xp6Ov2X2irfm3J)
+[🛒 Amazon Music](https://music.amazon.com.br/artists/B08P747KY2/dj-ramon-sucesso)
+[⚫ Tidal](https://tidal.com/browse/artist/22372654)
+[♪  TikTok](https://www.tiktok.com/@djramonsucessoofc)"""
 
 DJ_RAMON_SUCESSO_SPOTIFY_PIC = "https://yt3.ggpht.com" \
                                "/Y50i3LmM9Vqb2x_iI5sWnYLm7hYJ5nVk8nvktGZhuWNA5uFyXfqFyEN63ra7jbiPzVA4jxcY-ota=s640" \
                                "-c-fcrop64=1,00000000ffffffff-nd-v1"
 
-ME_DESC = """🐦 @KairoAmorim
-📧 kairo.amorim2001@gmail.com
-🐙 https://github.com/kairo741"""
+ME_DESC = """[🐦 @KairoAmorim](https://twitter.com/KairoAmorim)
+[📧 kairo.amorim2001@gmail.com](mailto:kairo.amorim2001@gmail.com)
+[🐙 GitHub](https://github.com/kairo741)"""
 
 SEXTA_DOS_CRIAS_MP4 = "files/sexta_dos_crias.mp4"
 SEXTA_DOS_CRIAS_SOUND_MP3 = "files/sexta_dos_crias_sound.mp3"
