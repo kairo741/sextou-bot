@@ -1,6 +1,6 @@
 def get_help_commands():
     return [
-        Command("sextou", "Sextouuuu 🔥", ["complete"], None),
+        Command("sextou", "Sextouuuu 🔥", ["complete", "alternative"], None),
         Command("lyrics", "Letra da música", None, None),
         Command("shrek", "Graças a Deus é sexta-feira", None, None),
         Command("fring", "Holy shit It's Fring Friday", None, None),

@@ -36,6 +36,8 @@ async def on_ready():
 async def send_video(context, version="NORMAL"):
     if version.upper() == "COMPLETE":
         await context.send(file=discord.File(constants.SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION))
+    elif version.upper() == "ALTERNATIVE":
+        await context.send(file=discord.File(constants.SEXTA_DOS_CRIAS_MP4_ALTERNATIVE_EDITION))
     else:
         await context.send(file=discord.File(constants.SEXTA_DOS_CRIAS_MP4))
 
