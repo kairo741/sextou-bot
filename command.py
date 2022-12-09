@@ -6,7 +6,7 @@ def get_help_commands():
         Command("fring", "Holy shit It's Fring Friday", None, None),
         Command("rockers", "Rooockkkkers SEXTOoOoUuU", None, None),
         Command("urso", "Urso da semana da sexta", None, None),
-        Command("hexa", "Hexa dos crias :flag_br:", None, None),
+        # Command("hexa", "Hexa dos crias :flag_br:", None, None),
         Command("sound", "MP3 do sexta dos crias", None, None),
         Command("message", "ASCII aleatório desenhando \"Sextou\"", None, None),
         Command("sexta?", "Memes boomers horríveis de sextou", None, None),
