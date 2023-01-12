@@ -4,7 +4,7 @@ from movies.movie import Movie
 from movies.series import Series
 from movies.detailed_movie import DetailedMovie
 from movies.detailed_series import DetailedSeries
-from random import choice
+from random import choice, randint
 
 
 class ShowsService:
@@ -24,7 +24,7 @@ class ShowsService:
 
     # region Movies
     def get_popular_movies(self):
-        url = "https://api.themoviedb.org/3/movie/popular?language=pt"
+        url = f"https://api.themoviedb.org/3/movie/popular?language=pt&page={randint(1, 500)}"
         response = self._get_api_request(url)
         response_json = response.json()
         movies_json = json.loads(json.dumps(response_json).replace("False", "false").replace("True", "true"))
@@ -49,7 +49,7 @@ class ShowsService:
 
     # region Series
     def get_popular_series(self):
-        url = "https://api.themoviedb.org/3/tv/popular?language=pt"
+        url = f"https://api.themoviedb.org/3/tv/popular?language=pt&page={randint(1, 500)}"
         response = self._get_api_request(url)
         response_json = response.json()
         series_json = json.loads(json.dumps(response_json).replace("False", "false").replace("True", "true"))
