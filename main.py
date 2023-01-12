@@ -11,8 +11,12 @@ import ascii
 import command
 import constants
 from spotify import spotifyclient
+from movies import shows_service as show_service
+from datetime import timedelta
+import datetime
 
 client = commands.Bot(command_prefix=commands.when_mentioned_or("$ "), intents=discord.Intents.all(), help_command=None)
+shows_service = show_service.ShowsService(os.environ["THEMOVIEDB_TOKEN"])
 
 
 @client.event
@@ -277,4 +281,102 @@ async def stop_playing(context):
 
 # endregion
 
+
+# region Movies/Series
+
+@client.hybrid_command(name="assistir_filme", with_app_command=True, description="Sugestão do que assistir")
+async def send_show(context):
+    is_movie = choice([True, False])
+    show = shows_service.get_one_popular_movie_detailed()
+
+    message = discord.Embed(title=f'🎥 {show.title}', colour=discord.Colour.random())
+
+    message.add_field(name=f'Avaliação:',
+                      value=f'⭐ | {(show.vote_average * 10):.2f}%',
+                      inline=False)
+    message.add_field(name='Classificação:',
+                      value=f'🔞 | Filme +18' if show.adult else f'🟩 | Livre para todos os públicos',
+                      inline=False)
+
+    message.add_field(name=f'Data de lançamento',
+                      value=f'🗓️ | {datetime.datetime.strptime(show.release_date, "%Y-%m-%d").strftime("%d/%m/%Y")}',
+                      inline=False)
+    message.add_field(name=f'Duração',
+                      value=f'⌛ | {str(timedelta(minutes=show.runtime))[:-3]}h',
+                      inline=False)
+    genres_message = ""
+    for genre in show.genres:
+        genres_message += f'• {genre["name"]}\n'
+
+    if genres_message != "":
+        message.add_field(name=f'Gênero(s)',
+                          value=genres_message,
+                          inline=False)
+
+    if show.overview != "":
+        message.add_field(name=f'Sinopse',
+                          value=f'📄 | {show.overview}',
+                          inline=False)
+
+    message.set_image(url=f'https://image.tmdb.org/t/p/original{show.poster_path}')
+    await context.send(embed=message)
+
+
+@client.hybrid_command(name="assistir_serie", with_app_command=True, description="Sugestão do que assistir")
+async def send_show(context):
+    show = shows_service.get_one_popular_series_detailed()
+
+    message = discord.Embed(title=f'🎥 {show.name}', colour=discord.Colour.random())
+
+    message.add_field(name=f'Avaliação:',
+                      value=f'⭐ | {(show.vote_average * 10):.2f}%',
+                      inline=False)
+    message.add_field(name='Classificação:',
+                      value=f'🔞 | Série +18' if show.adult else f'🟩 | Livre para todos os públicos',
+                      inline=False)
+
+    if show.first_air_date != "":
+        message.add_field(name=f'1° episódio lançado',
+                          value=f'🗓️ | {datetime.datetime.strptime(show.first_air_date, "%Y-%m-%d").strftime("%d/%m/%Y")}',
+                          inline=True)
+    if show.last_air_date != "":
+        message.add_field(name=f'Último episódio lançado',
+                          value=f'🗓️ | {datetime.datetime.strptime(show.last_air_date, "%Y-%m-%d").strftime("%d/%m/%Y")}',
+                          inline=True)
+
+    # Pular uma linha
+    message.add_field(name=f'',
+                      value=f'',
+                      inline=False)
+
+    message.add_field(name=f'Número de episódios',
+                      value=f'🔢 | {show.number_of_episodes}',
+                      inline=True)
+    message.add_field(name=f'Número de temporadas',
+                      value=f'🔢 | {show.number_of_seasons}',
+                      inline=True)
+    genres_message = ""
+    for genre in show.genres:
+        genres_message += f'• {genre["name"]}\n'
+
+    if genres_message != "":
+        message.add_field(name=f'Gênero(s)',
+                          value=genres_message,
+                          inline=False)
+
+    if show.overview != "":
+        message.add_field(name=f'Sinopse',
+                          value=f'📄 | {show.overview}',
+                          inline=False)
+
+    if show.homepage != "":
+        message.add_field(name=f'URL',
+                          value=f"🔗 | [Acessar]({show.homepage})",
+                          inline=False)
+
+    message.set_image(url=f'https://image.tmdb.org/t/p/original{show.poster_path}')
+    await context.send(embed=message)
+
+
+# endregion
 client.run(os.environ["BOT_TOKEN"])
