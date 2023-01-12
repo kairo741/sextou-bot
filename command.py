@@ -17,6 +17,8 @@ def get_help_commands():
         Command("play", "Sexta dos crias no voice chat", None, None),
         Command("stop", "Para de tocar enquanto está no voice", None, None),
         Command("leave", "Sai do voice chat", None, None),
+        Command("assistir_filme", "Envia uma sugestão de filme para assistir", None, None),
+        Command("assistir_serie", "Envia uma sugestão de série para assistir", None, None),
     ]
 
 

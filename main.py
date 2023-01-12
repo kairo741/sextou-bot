@@ -284,7 +284,8 @@ async def stop_playing(context):
 
 # region Movies/Series
 
-@client.hybrid_command(name="assistir_filme", with_app_command=True, description="Sugestão do que assistir")
+@client.hybrid_command(name="assistir_filme", with_app_command=True,
+                       description="Envia uma sugestão de filme para assistir")
 async def send_show(context):
     is_movie = choice([True, False])
     show = shows_service.get_one_popular_movie_detailed()
@@ -322,7 +323,8 @@ async def send_show(context):
     await context.send(embed=message)
 
 
-@client.hybrid_command(name="assistir_serie", with_app_command=True, description="Sugestão do que assistir")
+@client.hybrid_command(name="assistir_serie", with_app_command=True,
+                       description="Envia uma sugestão de série para assistir")
 async def send_show(context):
     show = shows_service.get_one_popular_series_detailed()
 
