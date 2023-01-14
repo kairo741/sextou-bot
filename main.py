@@ -287,7 +287,6 @@ async def stop_playing(context):
 @client.hybrid_command(name="assistir_filme", with_app_command=True,
                        description="Envia uma sugestão de filme para assistir")
 async def send_show(context):
-    is_movie = choice([True, False])
     show = shows_service.get_one_popular_movie_detailed()
 
     message = discord.Embed(title=f'🎥 {show.title}', colour=discord.Colour.random())

@@ -75,4 +75,5 @@ IS_SEXTA_7 = "https://scontent.fmgf8-1.fna.fbcdn.net/v/t1.18169-9/10698605_15017
              "=twVi16WVeqEAX9PR3hx&tn=i6HeVx6Uj8ELhXzA&_nc_ht=scontent.fmgf8-1.fna&oh=00_AT-obJfrj3oxFAD_ZtW3CA7" \
              "-RiRTBemwFoMmOs4xZe-xDg&oe=6290C003 "
 
-FFMPEG_PATH = "C:/path/ffmpeg.exe"
+# FFMPEG_PATH = "C:/path/ffmpeg.exe"
+FFMPEG_PATH = "files/ffmpeg.exe"
