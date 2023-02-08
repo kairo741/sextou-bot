@@ -1,6 +1,6 @@
 import os
 import re
-from random import choice
+from random import choice, randint
 
 import discord
 from discord.ui import Select, View
@@ -58,7 +58,10 @@ async def send_shrek(context):
 
 @client.hybrid_command(name="urso", with_app_command=True, description="Urso da semana da sexta")
 async def send_shrek(context):
-    await context.send(file=discord.File(constants.URSO_DA_SEXTA_MP4))
+    video = constants.URSO_DA_SEXTA_MP4
+    if randint(1, 10) == 1:
+        video = constants.URSO_DA_MAMAR_MP4
+    await context.send(file=discord.File(video))
 
 
 @client.hybrid_command(name="rockers", with_app_command=True, description="Rooockkkkers SEXTOoOoUuU")
