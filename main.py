@@ -61,6 +61,8 @@ async def send_shrek(context):
     video = constants.URSO_DA_SEXTA_MP4
     if randint(1, 10) == 1:
         video = constants.URSO_DA_MAMAR_MP4
+    if randint(1, 10) == 1:
+        video = constants.URSO_DA_PISEIRO_MP4
     await context.send(file=discord.File(video))
 
 

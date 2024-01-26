@@ -51,6 +51,7 @@ SHREK_SEXTA_FEIRA_MP4 = "files/shrek_gracas_a_deus_e_sexta_feira.mp4"
 
 URSO_DA_SEXTA_MP4 = "files/urso_da_sexta.mp4"
 URSO_DA_MAMAR_MP4 = "files/urso_dia_de_mamar.mp4"
+URSO_DA_PISEIRO_MP4 = "files/urso_dia_de_piseiro.mp4"
 
 ROCKERS_SEXTOU_MP4 = "files/rockers_sextou.mp4"
 
