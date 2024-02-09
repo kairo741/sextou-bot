@@ -57,7 +57,7 @@ async def send_shrek(context):
 
 
 @client.hybrid_command(name="urso", with_app_command=True, description="Urso da semana da sexta")
-async def send_shrek(context):
+async def send_urso(context):
     video = constants.URSO_DA_SEXTA_MP4
     if randint(1, 10) == 1:
         video = constants.URSO_DA_MAMAR_MP4
@@ -67,7 +67,7 @@ async def send_shrek(context):
 
 
 @client.hybrid_command(name="rockers", with_app_command=True, description="Rooockkkkers SEXTOoOoUuU")
-async def send_shrek(context):
+async def send_rockers(context):
     await context.send(file=discord.File(constants.ROCKERS_SEXTOU_MP4))
 
 
