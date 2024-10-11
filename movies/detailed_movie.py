@@ -72,11 +72,11 @@ class DetailedMovie:
     vote_count: int
 
     def __init__(self, adult: bool, backdrop_path: str, belongs_to_collection: None, budget: int, genres: List[Genre],
-                 homepage: str, id: int, imdb_id: str, original_language: str, original_title: str, overview: str,
-                 popularity: float, poster_path: str, production_companies: List[ProductionCompany],
-                 production_countries: List[ProductionCountry], release_date: datetime, revenue: int, runtime: int,
-                 spoken_languages: List[SpokenLanguage], status: str, tagline: str, title: str, video: bool,
-                 vote_average: float, vote_count: int) -> None:
+                 homepage: str, id: int, imdb_id: str, origin_country: List[str], original_language: str,
+                 original_title: str, overview: str, popularity: float, poster_path: str,
+                 production_companies: List[ProductionCompany], production_countries: List[ProductionCountry],
+                 release_date: datetime, revenue: int, runtime: int, spoken_languages: List[SpokenLanguage],
+                 status: str, tagline: str, title: str, video: bool, vote_average: float, vote_count: int) -> None:
         self.adult = adult
         self.backdrop_path = backdrop_path
         self.belongs_to_collection = belongs_to_collection
@@ -85,6 +85,7 @@ class DetailedMovie:
         self.homepage = homepage
         self.id = id
         self.imdb_id = imdb_id
+        self.origin_country = origin_country
         self.original_language = original_language
         self.original_title = original_title
         self.overview = overview

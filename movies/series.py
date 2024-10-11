@@ -17,9 +17,10 @@ class Series:
     vote_average: float
     vote_count: int
 
-    def __init__(self, backdrop_path: str, first_air_date: datetime, genre_ids: List[int], id: int, name: str,
-                 origin_country: List[str], original_language: str, original_name: str, overview: str,
+    def __init__(self, adult: bool, backdrop_path: str, first_air_date: datetime, genre_ids: List[int], id: int,
+                 name: str, origin_country: List[str], original_language: str, original_name: str, overview: str,
                  popularity: float, poster_path: str, vote_average: float, vote_count: int) -> None:
+        self.adult = adult
         self.backdrop_path = backdrop_path
         self.first_air_date = first_air_date
         self.genre_ids = genre_ids
