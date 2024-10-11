@@ -236,9 +236,9 @@ async def help_message(context):
             if can_run:
                 await context.invoke(cmd)
             else:
-                context.send("Esse comando não pode ser executado pelo menu, tente com o prefixo $ ")
+                await context.send("Esse comando não pode ser executado pelo menu, tente com o prefixo $ ")
         except:
-            context.send("Esse comando não pode ser executado pelo menu, tente com o prefixo $ ")
+            await context.send("Esse comando não pode ser executado pelo menu, tente com o prefixo $ ")
 
         await interaction.response.defer()  # comando para responder a mensagem e não causar falha na interação
 
