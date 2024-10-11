@@ -79,3 +79,9 @@ IS_SEXTA_7 = "https://scontent.fmgf8-1.fna.fbcdn.net/v/t1.18169-9/10698605_15017
 
 # FFMPEG_PATH = "C:/path/ffmpeg.exe"
 FFMPEG_PATH = "files/ffmpeg.exe"
+
+MONKEY_GIF = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTIzdGhiOXpxN3BqN3J4ZmZlY3FsaXN4OWo5ZnB4Mzk4bWx3YXY4ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kDf0eEXhOhlZgdp2dy/giphy.gif"
+
+SEXTOU_TITLES = ["♗✌  𝓼𝓔ⓧＴσσ๏ยＵｕ  ☠💔", "😾🐳  s𝐞𝓧ᵗ𝔬ⓞｏᵘ𝓾ù  ☟☆", "☹♕  𝐬Ｅ𝐱𝕥𝐎๏ᗝ𝓤𝐮𝓤  💚💢", "♔😝  sεˣ丅Ỗ𝔬σｕ𝔲𝓊  ♢💋",
+                 "🎯👹  𝔰ⒺЖｔ𝓸Ｏⓞ𝐮𝐔𝔲  ✌😡", "♪🐠  ˢ€𝔁𝕥𝕆𝕠σ𝐔ù𝐮  💎☜", "🐟🎯  Ş𝕖x丅σᗝσยย𝓤  🐧♪", ".•♫•♬• ѕⓔ乂тᗝσỖᵘùᵘ •♬•♫•.",
+                 "☜👻  𝕤𝔼ⓧ𝓽𝕆𝐨𝑜𝕌𝔲ⓤ  ♨🍩", ".•°¤*(¯`★´¯)*¤° 𝔰𝒆乂𝓉ㄖᗝσ𝓊𝕦Ⓤ °¤*(¯´★`¯)*¤°•."]

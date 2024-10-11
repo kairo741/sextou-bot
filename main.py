@@ -14,6 +14,7 @@ from spotify import spotifyclient
 from movies import shows_service as show_service
 from datetime import timedelta
 import datetime
+import asyncio
 
 client = commands.Bot(command_prefix=commands.when_mentioned_or("$ "), intents=discord.Intents.all(), help_command=None)
 shows_service = show_service.ShowsService(os.environ["THEMOVIEDB_TOKEN"])
@@ -129,6 +130,53 @@ async def is_sexta(context):
                                constants.IS_SEXTA_3, constants.IS_SEXTA_4,
                                constants.IS_SEXTA_5, constants.IS_SEXTA_6,
                                constants.IS_SEXTA_7]))
+
+
+@client.hybrid_command("pode_sextar", with_app_command=True, description="Já pode Sextar ou ta cedo?")
+async def time_until_sexta(context):
+    hours, minutes, seconds = calculate_time_until_sexta_6pm()
+    timer = 60 if hours <= (168 - 7) else 30  # Em segundos
+    embed = generate_timer_embed(hours, minutes, seconds)
+    message = await context.send(embed=embed)
+    while timer >= 0:
+        hours, minutes, seconds = calculate_time_until_sexta_6pm()
+        await asyncio.sleep(timer / 60)
+        embed = generate_timer_embed(hours, minutes, seconds)
+        await message.edit(embed=embed)
+        timer -= 1
+
+
+def generate_timer_embed(hours, minutes, seconds):
+    if hours <= (168 - 7):
+        return discord.Embed(title="Já pode sextar ou ta muito cedo?",
+                             description=f"Faltam exatas **[{hours:02}:{minutes:02}:{seconds:02}h]({constants.YT_1HOUR_URL})** para **SEXTAR**!!!",
+                             colour=discord.Colour.dark_teal()).set_image(url=constants.MONKEY_GIF)
+    else:
+        return (discord.Embed(
+            title=choice(constants.SEXTOU_TITLES),
+            description=f"Ｆｉｎａｌｍｅｎｔｅ **ＳＥＸＴＯＵ** ｐｏｒｒａａａａａ!!!",
+            colour=discord.Colour.random()).set_image(url=constants.SEXTOU_LYRICS_GIF)
+                .set_footer(text="AI AI AIAIAI 🔇 IAIAIAIAI \n(SEGUUU 🗡🗡💨 RA) \nhttps://discord.gg/5d8eqqkC"))
+
+
+def calculate_time_until_sexta_6pm():
+    today = datetime.datetime.now()
+    # Sexta-feira é o dia 4 da semana (segunda-feira é 0)
+    days_ahead = 4 - today.weekday()
+    if days_ahead <= 0:  # Se hoje é sexta-feira ou depois, conta para a próxima sexta
+        days_ahead += 7
+
+    # Define a próxima sexta-feira às 00:00 (meia-noite)
+    next_friday = today + datetime.timedelta(days=days_ahead)
+    next_friday = next_friday.replace(hour=18, minute=0, second=0, microsecond=0)
+    # Calcula a diferença de tempo até a próxima sexta 18h
+    time_difference = next_friday - today
+
+    # Extrair horas, minutos e segundos da diferença de tempo
+    total_seconds = int(time_difference.total_seconds())
+    hours, remainder = divmod(total_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return hours, minutes, seconds
 
 
 # @client.hybrid_command(name="hexa", with_app_command=True, description="Hexa dos Crias")
