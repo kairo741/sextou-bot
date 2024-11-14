@@ -1,0 +1,64 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+*.cache
+*.log
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# PyCharm specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+*.cover
+.cache
+nosetests.xml
+coverage.xml
+*.log
+*.out
+
+# Dist files
+dist/
+build/
+*.egg-info
+.eggs/
+wheels/
+pip-wheel-metadata/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Pyre type checker
+.pyre/
+
+# Mypy
+.mypy_cache/
+
+# Pylint reports
+pylint_reports/
+
+# Local configuration files
+*.env
+.envrc
+.venv
+venv/
+env/
+
+# Ignorar todos os arquivos .zip
+*.zip
