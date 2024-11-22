@@ -134,22 +134,25 @@ async def is_sexta(context):
 
 @client.hybrid_command("pode_sextar", with_app_command=True, description="Já pode Sextar ou ta cedo?")
 async def time_until_sexta(context):
-    hours, minutes, seconds = calculate_time_until_sexta_6pm()
+    hours, minutes, seconds, timestamp = calculate_time_until_sexta_6pm()
     timer = 60 if hours <= (168 - 7) else 30  # Em segundos
     embed = generate_timer_embed(hours, minutes, seconds)
     message = await context.send(embed=embed)
     while timer >= 0:
-        hours, minutes, seconds = calculate_time_until_sexta_6pm()
+        hours, minutes, seconds, timestamp = calculate_time_until_sexta_6pm()
         await asyncio.sleep(timer / 60)
         embed = generate_timer_embed(hours, minutes, seconds)
         await message.edit(embed=embed)
         timer -= 1
+    embed = generate_timer_embed(hours, minutes, seconds, f'Você poderá **SEXTAR** <t:{timestamp}:R>!!')
+    await message.edit(embed=embed)
 
 
-def generate_timer_embed(hours, minutes, seconds):
+def generate_timer_embed(hours, minutes, seconds, last_text=None):
     if hours <= (168 - 7):
+        text = f"Faltam exatas **[{hours:02}:{minutes:02}:{seconds:02}h]({constants.YT_1HOUR_URL})** para **SEXTAR**!!!"
         return discord.Embed(title="Já pode sextar ou ta muito cedo?",
-                             description=f"Faltam exatas **[{hours:02}:{minutes:02}:{seconds:02}h]({constants.YT_1HOUR_URL})** para **SEXTAR**!!!",
+                             description=text if last_text is None else last_text,
                              colour=discord.Colour.dark_teal()).set_image(url=constants.MONKEY_GIF)
     else:
         return (discord.Embed(
@@ -176,7 +179,8 @@ def calculate_time_until_sexta_6pm():
     total_seconds = int(time_difference.total_seconds())
     hours, remainder = divmod(total_seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
-    return hours, minutes, seconds
+    timestamp = round(today.timestamp() + total_seconds)
+    return hours, minutes, seconds, timestamp
 
 
 # @client.hybrid_command(name="hexa", with_app_command=True, description="Hexa dos Crias")
