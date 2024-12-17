@@ -1,6 +1,7 @@
 import os
 import re
 from random import choice, randint
+from sys import executable
 
 import discord
 from discord.ui import Select, View
@@ -15,6 +16,8 @@ from movies import shows_service as show_service
 from datetime import timedelta
 import datetime
 import asyncio
+
+FFMPEG_PATH = os.path.join("files", "ffmpeg.exe")
 
 client = commands.Bot(command_prefix=commands.when_mentioned_or("$ "), intents=discord.Intents.all(), help_command=None)
 shows_service = show_service.ShowsService(os.environ["THEMOVIEDB_TOKEN"])
@@ -294,23 +297,27 @@ async def create_playlist(context, playlist_name, *genres):
 async def play_sextou(context):
     await play_sound(constants.SEXTA_DOS_CRIAS_SOUND_MP3, context)
 
-
 async def play_sound(file_name, context):
-    connect = True
-    connected_channel = discord.utils.get(client.voice_clients,
-                                          guild=context.guild)
+    try:
+        connect = True
+        connected_channel = discord.utils.get(client.voice_clients, guild=context.guild)
 
-    if connected_channel is None:
-        connect = await join_channel(context)
+        if connected_channel is None:
+            connect = await join_channel(context)
 
-    if connect:
-        channel = discord.utils.get(client.voice_clients, guild=context.guild)
-        channel.play(
-            discord.FFmpegPCMAudio(executable=constants.FFMPEG_PATH,
-                                   source=file_name))
-        return True
-    else:
-        await context.send("Você deve estar conectado a um canal de voz")
+        if connect:
+            channel: discord.VoiceClient = discord.utils.get(client.voice_clients, guild=context.guild)
+            if channel:
+                source = discord.FFmpegPCMAudio(file_name, executable=constants.FFMPEG_PATH)
+                channel.play(source)
+                return True
+            else:
+                await context.send("Falha ao conectar ao canal de voz.")
+        else:
+            await context.send("Você deve estar conectado a um canal de voz.")
+    except Exception as e:
+        await context.send(f"Erro ao tentar tocar música: {e}")
+        print(f"Erro: {e}")
 
 
 async def join_channel(context):
