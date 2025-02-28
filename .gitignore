@@ -55,6 +55,7 @@ pylint_reports/
 
 # Local configuration files
 *.env
+.env
 .envrc
 .venv
 venv/

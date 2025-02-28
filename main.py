@@ -40,8 +40,9 @@ async def on_ready():
 
 
 @client.hybrid_command(name="sextou", with_app_command=True, description="Sextouuu")
-@discord.app_commands.describe(version="Versão do video (NORMAL ou COMPLETE)")
+@discord.app_commands.describe(version="Versão do video (NORMAL, COMPLETE ou ALTERNATIVE)")
 async def send_video(context, version="NORMAL"):
+    await context.defer()
     if version.upper() == "COMPLETE":
         await context.send(file=discord.File(constants.SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION))
     elif version.upper() == "ALTERNATIVE":
@@ -52,31 +53,34 @@ async def send_video(context, version="NORMAL"):
 
 @client.hybrid_command(name="sound", with_app_command=True, description="Sexta dos crias sound")
 async def send_sound(context):
+    await context.defer()
     await context.send(file=discord.File(constants.SEXTA_DOS_CRIAS_SOUND_MP3))
 
 
 @client.hybrid_command(name="shrek", with_app_command=True, description="Graças a Deus é sexta-feira")
 async def send_shrek(context):
+    await context.defer()
     await context.send(file=discord.File(constants.SHREK_SEXTA_FEIRA_MP4))
 
 
 @client.hybrid_command(name="urso", with_app_command=True, description="Urso da semana da sexta")
 async def send_urso(context):
-    video = constants.URSO_DA_SEXTA_MP4
-    if randint(1, 10) == 1:
-        video = constants.URSO_DA_MAMAR_MP4
-    if randint(1, 10) == 1:
-        video = constants.URSO_DA_PISEIRO_MP4
-    await context.send(file=discord.File(video))
+    await context.defer()
+    await context.send(file=discord.File(choice([constants.URSO_DA_SEXTA_MP4, constants.URSO_DA_MAMAR_MP4,
+                                                 constants.URSO_DA_PISEIRO_MP4, constants.URSO_DA_EX_MP4,
+                                                 constants.ATXES_AD_OSRU_MP4, constants.URSO_ESTOURADO_MP4,
+                                                 constants.URSO_DA_sexTA_MP4, constants.URSO_REMASTER_MP4])))
 
 
 @client.hybrid_command(name="rockers", with_app_command=True, description="Rooockkkkers SEXTOoOoUuU")
 async def send_rockers(context):
+    await context.defer()
     await context.send(file=discord.File(constants.ROCKERS_SEXTOU_MP4))
 
 
 @client.hybrid_command(name="fring", with_app_command=True, description="Holy shit it's fring friday")
 async def send_fring(context):
+    await context.defer()
     await context.send(file=discord.File(constants.FRING_FRIDAY_MP4))
 
 
@@ -196,6 +200,7 @@ def calculate_time_until_sexta_6pm():
 
 @client.hybrid_command(name="help", with_app_command=True, description="Exibe os todos os comandos")
 async def help_message(context):
+    await context.defer()
     message = discord.Embed(title="Comandos 🗡🗡💨",
                             colour=discord.Colour.dark_purple())
     message.set_footer(text="AI AI AIAIAI 🔇 IAIAIAIAI \n(SEGUUU 🗡🗡💨 RA) \nhttps://discord.gg/5d8eqqkC")
@@ -351,6 +356,7 @@ async def stop_playing(context):
 @client.hybrid_command(name="filme", with_app_command=True,
                        description="Envia uma sugestão de filme para assistir")
 async def send_show(context):
+    await context.defer()
     show = shows_service.get_one_popular_movie_detailed()
 
     message = discord.Embed(title=f'🎥 {show.title}', colour=discord.Colour.random())
@@ -389,6 +395,7 @@ async def send_show(context):
 @client.hybrid_command(name="serie", with_app_command=True,
                        description="Envia uma sugestão de série para assistir")
 async def send_show(context):
+    await context.defer()
     show = shows_service.get_one_popular_series_detailed()
 
     message = discord.Embed(title=f'🎥 {show.name}', colour=discord.Colour.random())
