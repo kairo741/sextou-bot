@@ -64,6 +64,7 @@ async def send_shrek(context):
 
 
 @client.hybrid_command(name="urso", with_app_command=True, description="Urso da semana da sexta")
+@commands.cooldown(1, 15, commands.BucketType.user)
 async def send_urso(context):
     await context.defer()
     await context.send(file=discord.File(choice([constants.URSO_DA_SEXTA_MP4, constants.URSO_DA_MAMAR_MP4,
@@ -71,6 +72,10 @@ async def send_urso(context):
                                                  constants.ATXES_AD_OSRU_MP4, constants.URSO_ESTOURADO_MP4,
                                                  constants.URSO_DA_sexTA_MP4, constants.URSO_REMASTER_MP4])))
 
+@send_urso.error
+async def send_urso_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        await ctx.send(f"Espere {round(error.retry_after, 2)} segundos antes de enviar outro vídeo.", ephemeral=True)
 
 @client.hybrid_command(name="rockers", with_app_command=True, description="Rooockkkkers SEXTOoOoUuU")
 async def send_rockers(context):
@@ -262,38 +267,38 @@ async def help_message(context):
     await context.send(embed=message, view=view)
 
 
-@client.command("playlist")
-async def create_playlist(context, playlist_name, *genres):
-    spotify_client = spotifyclient.SpotifyClient(os.environ["SPOTIFY_AUTHORIZATION_TOKEN"])
-    # last_tracks = spotify_client.get_last_played_tracks(number_of_tracks)
-
-    genres = '°'.join(genres)
-    if genres.upper() == 'DJ°RAMON°SUCESSO':
-        for playlist in spotify_client.get_dj_ramons_albums():
-            await context.send(f"https://open.spotify.com/album/{playlist.id}")
-    else:
-        if genres is not None:
-            genres = re.sub("\!|\'|\?|,| |", "", genres)
-            genres = genres.replace("°", ",")
-            genres = ','.join(list(dict.fromkeys(genres.split(','))))
-
-        if spotify_client.validate_music_genres(genres):
-            recommended_tracks = spotify_client.get_track_recommendations(genres)
-            playlist = spotify_client.create_playlist(playlist_name)
-            spotify_client.populate_playlist(playlist, recommended_tracks)
-            genres_message = ""
-            genres = genres.split(",")
-            for genre in genres:
-                genres_message += f"• {genre.capitalize()}\n"
-
-            message = discord.Embed(
-                title=f"Gênero{'s' if len(genres) > 1 else ''} escolhido{'s' if len(genres) > 1 else ''}",
-                description=genres_message,
-                colour=discord.Colour.dark_green())
-            await context.send(embed=message)
-            await context.send(f"Sua playlist: https://open.spotify.com/playlist/{playlist.id}")
-        else:
-            await context.send("""AI AI AIAIAI 🔇 IAIAIAIAI\n(SEGUUU 🗡🗡💨 RA)\nUm ou mais gêneros não são válidos!""")
+# @client.command("playlist")
+# async def create_playlist(context, playlist_name, *genres):
+#     spotify_client = spotifyclient.SpotifyClient(os.environ["SPOTIFY_AUTHORIZATION_TOKEN"])
+#     # last_tracks = spotify_client.get_last_played_tracks(number_of_tracks)
+#
+#     genres = '°'.join(genres)
+#     if genres.upper() == 'DJ°RAMON°SUCESSO':
+#         for playlist in spotify_client.get_dj_ramons_albums():
+#             await context.send(f"https://open.spotify.com/album/{playlist.id}")
+#     else:
+#         if genres is not None:
+#             genres = re.sub("\!|\'|\?|,| |", "", genres)
+#             genres = genres.replace("°", ",")
+#             genres = ','.join(list(dict.fromkeys(genres.split(','))))
+#
+#         if spotify_client.validate_music_genres(genres):
+#             recommended_tracks = spotify_client.get_track_recommendations(genres)
+#             playlist = spotify_client.create_playlist(playlist_name)
+#             spotify_client.populate_playlist(playlist, recommended_tracks)
+#             genres_message = ""
+#             genres = genres.split(",")
+#             for genre in genres:
+#                 genres_message += f"• {genre.capitalize()}\n"
+#
+#             message = discord.Embed(
+#                 title=f"Gênero{'s' if len(genres) > 1 else ''} escolhido{'s' if len(genres) > 1 else ''}",
+#                 description=genres_message,
+#                 colour=discord.Colour.dark_green())
+#             await context.send(embed=message)
+#             await context.send(f"Sua playlist: https://open.spotify.com/playlist/{playlist.id}")
+#         else:
+#             await context.send("""AI AI AIAIAI 🔇 IAIAIAIAI\n(SEGUUU 🗡🗡💨 RA)\nUm ou mais gêneros não são válidos!""")
 
 
 # region Voice chat
