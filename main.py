@@ -1,21 +1,19 @@
+import asyncio
+import datetime
 import os
-import re
+from datetime import timedelta
 from random import choice, randint
-from sys import executable
 
 import discord
-from discord.ui import Select, View
+import requests
 from discord.ext import commands
+from discord.ui import Select, View
 from pyfiglet import figlet_format
 
 import ascii
 import command
 import constants
-from spotify import spotifyclient
 from movies import shows_service as show_service
-from datetime import timedelta
-import datetime
-import asyncio
 
 FFMPEG_PATH = os.path.join("files", "ffmpeg.exe")
 
@@ -64,7 +62,7 @@ async def send_shrek(context):
 
 
 @client.hybrid_command(name="urso", with_app_command=True, description="Urso da semana da sexta")
-@commands.cooldown(1, 15, commands.BucketType.user)
+@commands.cooldown(1, 35, commands.BucketType.user)
 async def send_urso(context):
     await context.defer()
     await context.send(file=discord.File(choice([constants.URSO_DA_SEXTA_MP4, constants.URSO_DA_MAMAR_MP4,
@@ -72,10 +70,12 @@ async def send_urso(context):
                                                  constants.ATXES_AD_OSRU_MP4, constants.URSO_ESTOURADO_MP4,
                                                  constants.URSO_DA_sexTA_MP4, constants.URSO_REMASTER_MP4])))
 
+
 @send_urso.error
 async def send_urso_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         await ctx.send(f"Espere {round(error.retry_after, 2)} segundos antes de enviar outro vídeo.", ephemeral=True)
+
 
 @client.hybrid_command(name="rockers", with_app_command=True, description="Rooockkkkers SEXTOoOoUuU")
 async def send_rockers(context):
@@ -307,6 +307,7 @@ async def help_message(context):
 async def play_sextou(context):
     await play_sound(constants.SEXTA_DOS_CRIAS_SOUND_MP3, context)
 
+
 async def play_sound(file_name, context):
     try:
         connect = True
@@ -453,6 +454,52 @@ async def send_show(context):
 
     message.set_image(url=f'https://image.tmdb.org/t/p/original{show.poster_path}')
     await context.send(embed=message)
+
+
+def get_historic_friday_event():
+    mm = str(randint(1, 12)).zfill(2)
+    dd = str(randint(1, 31 if mm != '02' else 28)).zfill(2)
+
+    url = f"https://pt.wikipedia.org/api/rest_v1/feed/onthisday/all/{mm}/{dd}"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        events = response.json()["events"]
+        if events:
+            friday_events = []
+            month = int(mm)
+            day = int(dd)
+            for event in events:
+                year = event["year"]
+                try:
+                    event_date = datetime.date(year, month, day)
+                    if event_date.weekday() == 4:  # Verifica se é sexta-feira
+                        friday_events.append(event)
+                except ValueError:
+                    continue  # Ignora datas inválidas
+
+            if friday_events:
+                random_event = choice(friday_events)
+                thumbnail = random_event["pages"][0]["originalimage"]['source']
+                final_date = datetime.date(random_event["year"], month, day)
+                return random_event['text'], thumbnail, final_date
+        else:
+            return "Não encontrei eventos históricos de sexta-feira para hoje! 😢"
+    else:
+        return "Erro ao buscar eventos históricos! 🚨"
+
+
+@client.hybrid_command(name="sextou_historico", with_app_command=True,
+                       description="Exibe um fato histórico que ocorreu em uma sexta-feira!")
+async def historic_friday(ctx):
+    await ctx.defer()
+    description, thumbnail, date = get_historic_friday_event()
+    timestamp = datetime.datetime.combine(date, datetime.datetime.min.time(), tzinfo=datetime.timezone.utc)
+    timestamp.replace(hour=0, minute=0, second=0, microsecond=0)
+    embed = discord.Embed(title=f'📅 Na sexta-feira de **{date.strftime("%d/%m/%Y")}**', colour=discord.Colour.random(),
+                          description=description, timestamp=timestamp)
+    embed.set_image(url=thumbnail)
+    await ctx.send(embed=embed)
 
 
 # endregion
