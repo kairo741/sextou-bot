@@ -570,5 +570,13 @@ async def status_sextou(ctx, me=False):
     await ctx.send(embed=embed)
 
 
+async def react_sextou(message: discord.Message):
+    content = message.content.lower()
+    key_words = ["sexta", "sextou", "friday"]
+    if any(palavra in content for palavra in key_words):
+        for emoji in ["🔥", "🇸", "🇪", "🇽", "🇹", "🇴", "🇺"]:
+            await message.add_reaction(emoji)
+
+
 # endregion
 client.run(os.environ["BOT_TOKEN"])
