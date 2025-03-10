@@ -49,6 +49,13 @@ async def on_command(ctx):
         USER_COMMAND_COUNTER[user_id][ctx.command.name] = USER_COMMAND_COUNTER[user_id].get(ctx.command.name, 0) + 1
 
 
+@client.event
+async def on_message(message):
+    if message.author.bot:
+        return
+    await react_sextou(message)
+
+
 @client.hybrid_command(name="sextou", with_app_command=True, description="Sextouuu")
 @discord.app_commands.describe(version="Versão do video (NORMAL, COMPLETE ou ALTERNATIVE)")
 async def send_video(context, version="NORMAL"):
