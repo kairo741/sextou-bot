@@ -16,7 +16,8 @@ import constants
 from movies import shows_service as show_service
 
 FFMPEG_PATH = os.path.join("files", "ffmpeg.exe")
-
+COMMAND_COUNTER = {}
+USER_COMMAND_COUNTER = {}
 client = commands.Bot(command_prefix=commands.when_mentioned_or("$ "), intents=discord.Intents.all(), help_command=None)
 shows_service = show_service.ShowsService(os.environ["THEMOVIEDB_TOKEN"])
 
@@ -32,9 +33,20 @@ async def on_ready():
         print(f'{len(synced)} slash commands foram sincronizados')
     except Exception as e:
         print(e)
-
-    # print(choice([ascii.SEXTOU_1, ascii.SEXTOU_2, ascii.SEXTOU_3, ascii.SEXTOU_4]))
     print(figlet_format('SEXTOU', font=choice(ascii.ASCII_FONTS)))
+
+
+@client.event
+async def on_command(ctx):
+    today = datetime.datetime.now()
+    if today.weekday() == 4:  # Se for sexta
+        COMMAND_COUNTER[ctx.command.name] = COMMAND_COUNTER.get(ctx.command.name, 0) + 1
+
+        # Contagem individual do usuário
+        user_id = ctx.author.id
+        if user_id not in USER_COMMAND_COUNTER:
+            USER_COMMAND_COUNTER[user_id] = {}
+        USER_COMMAND_COUNTER[user_id][ctx.command.name] = USER_COMMAND_COUNTER[user_id].get(ctx.command.name, 0) + 1
 
 
 @client.hybrid_command(name="sextou", with_app_command=True, description="Sextouuu")
@@ -499,6 +511,62 @@ async def historic_friday(ctx):
     embed = discord.Embed(title=f'📅 Na sexta-feira de **{date.strftime("%d/%m/%Y")}**', colour=discord.Colour.random(),
                           description=description, timestamp=timestamp)
     embed.set_image(url=thumbnail)
+    await ctx.send(embed=embed)
+
+
+@client.hybrid_command(name="status_sextou", with_app_command=True,
+                       description="Mostra se a sexta está boa ou não...")
+async def status_sextou(ctx, me=False):
+    await ctx.defer()
+    today = datetime.datetime.now()
+    if today.weekday() != 4:  # Valida se é sexta
+        await ctx.send("🚫 O comando `status_sextou` só funciona na sexta-feira! ⏳")
+        COMMAND_COUNTER.clear()
+        USER_COMMAND_COUNTER.clear()
+        return
+
+    user = ctx.author
+    commands_list = COMMAND_COUNTER
+    command_goal = 30
+    if me:
+        commands_list = USER_COMMAND_COUNTER[user.id]
+        command_goal = 5
+
+    total_cmds = sum(commands_list.values())
+    description = f"Hoje já foram usados **`{total_cmds}`** comandos no bot!"
+    footer_message = "Bora aumentar esse número? Sextoouuu! 🕺💃"
+    embed_color = discord.Color.dark_gray()
+
+    if me:
+        description = f"Hoje você já usou **`{total_cmds}`** comandos no bot!"
+    if total_cmds >= command_goal:
+        footer_message = "🔥 Agora sim, Sextouuuu! Essa sexta tá insana! 🚀🎉"
+        embed_color = discord.Color.random()
+
+    if not commands_list:
+        embed = discord.Embed(
+            title="📊 Status Sextou",
+            description="Ainda ninguém usou o bot hoje. Vamos começar o sextou? 🎉",
+            color=embed_color,
+            timestamp=today
+        )
+    else:
+        embed = discord.Embed(
+            title="📊 Status Sextou 🔥",
+            description=description,
+            color=embed_color,
+            timestamp=today,
+        )
+
+    for cmd, used_amount in commands_list.items():
+        embed.add_field(name=f"**{cmd}**", value=f"`{used_amount} vezes`", inline=False)
+
+    if not me:
+        embed.set_thumbnail(url=choice([constants.SEXTOU_LYRICS_GIF, constants.SEXTOU_HOMER_GIF]))
+    else:
+        embed.set_author(name=user.display_name, icon_url=user.avatar.url, url=constants.YT_1HOUR_URL)
+    embed.set_footer(text=footer_message)
+
     await ctx.send(embed=embed)
 
 

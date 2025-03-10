@@ -65,6 +65,7 @@ FRING_FRIDAY_MP4 = "files/fring_friday.mp4"
 HEXA_DOS_CRIAS_MP4 = "files/hexa_dos_crias_low_bitrate_compressed.mp4"
 
 SEXTOU_LYRICS_GIF = "https://c.tenor.com/yenNqRV0M2oAAAAC/sexta-sexta-feira.gif"
+SEXTOU_HOMER_GIF = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG94MDhudW1qMmc4cm1qNGNuZHl4eGdiZm9qdngwajNjb3g2NzdqbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TBagQ2NpdI1vr3b05G/giphy.gif"
 SEXTOU_AVATAR = "https://cdn.discordapp.com/avatars/954427348315418694/ea558ea1dc3ae7fbeba1476a0fe4eda2.png?size=2048"
 
 YT_1HOUR_URL = "https://www.youtube.com/watch?v=6zF3H1vH-6g"
