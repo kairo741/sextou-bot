@@ -12,13 +12,16 @@ def get_help_commands():
         Command("sexta?", "Memes boomers horríveis de sextou", None, None),
         Command("help", "Manda essa mensagem", None, None),
         Command("avatar", "Envia a foto de perfil do bot", None, None),
-        Command("playlist", "(off) Cria uma playlist no Spotify", ["rock", "pop", "metal", "etc"], None),
+        # Command("playlist", "(off) Cria uma playlist no Spotify", ["rock", "pop", "metal", "etc"], None),
         Command("info", "Infos sobre o bot", None, ["infos", "author", "authors", "bot"]),
         Command("play", "Sexta dos crias no voice chat", None, None),
         Command("stop", "Para de tocar enquanto está no voice", None, None),
         Command("leave", "Sai do voice chat", None, None),
-        Command("assistir_filme", "Envia uma sugestão de filme para assistir", None, None),
-        Command("assistir_serie", "Envia uma sugestão de série para assistir", None, None),
+        Command("filme", "Envia uma sugestão de filme para assistir", None, None),
+        Command("serie", "Envia uma sugestão de série para assistir", None, None),
+        Command("pode_sextar", "Exibe quanto tempo falta para a *Sexta*", None, None),
+        Command("sextou_historico", "Exibe um fato histórico que ocorreu em uma sexta-feira!", None, None),
+        Command("status_sextou", "Mostra se a sexta está boa ou não...", ["me"], None),
     ]
 
 

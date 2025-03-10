@@ -256,7 +256,7 @@ async def help_message(context):
                 description += f'{alias}, '
             description = description[0: len(description) - 2]
 
-        message.add_field(name=f'$ {com.name}',
+        message.add_field(name=f'$ `{com.name}`',
                           value=description,
                           inline=True)
 
@@ -475,6 +475,8 @@ async def send_show(context):
     await context.send(embed=message)
 
 
+# endregion
+
 def get_historic_friday_event():
     mm = str(randint(1, 12)).zfill(2)
     dd = str(randint(1, 31 if mm != '02' else 28)).zfill(2)
@@ -585,5 +587,4 @@ async def react_sextou(message: discord.Message):
             await message.add_reaction(emoji)
 
 
-# endregion
 client.run(os.environ["BOT_TOKEN"])
