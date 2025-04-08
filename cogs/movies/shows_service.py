@@ -1,9 +1,9 @@
 import requests
 import json
-from movies.movie import Movie
-from movies.series import Series
-from movies.detailed_movie import DetailedMovie
-from movies.detailed_series import DetailedSeries
+from cogs.movies.movie import Movie
+from cogs.movies.series import Series
+from cogs.movies.detailed_movie import DetailedMovie
+from cogs.movies.detailed_series import DetailedSeries
 from random import choice, randint
 
 
@@ -48,7 +48,7 @@ class ShowsService:
     # endregion
 
     # region Series
-    def get_popular_series(self):
+    def get_popular_show(self):
         url = f"https://api.themoviedb.org/3/tv/popular?language=pt&page={randint(1, 500)}"
         response = self._get_api_request(url)
         response_json = response.json()
@@ -60,11 +60,11 @@ class ShowsService:
         except NameError:
             print(response_json)
 
-    def get_one_popular_series_detailed(self):
-        show_id = choice(self.get_popular_series()).id
-        return self.get_series_detailed(show_id)
+    def get_one_popular_show_detailed(self):
+        show_id = choice(self.get_popular_show()).id
+        return self.get_show_detailed(show_id)
 
-    def get_series_detailed(self, show_id):
+    def get_show_detailed(self, show_id):
         url = f"https://api.themoviedb.org/3/tv/{show_id}?language=pt"
         response = self._get_api_request(url)
         response_json = json.loads(json.dumps(response.json()).replace("False", "false").replace("True", "true"))

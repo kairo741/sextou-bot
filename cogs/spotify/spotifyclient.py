@@ -1,10 +1,9 @@
 import json
 import os
 import requests
-import spotify.cover_image as cover_image
+from cogs import spotify as cover_image, spotify as track_class
 
-import spotify.track as track_class
-import spotify.playlist as playlist_class
+import cogs.spotify.playlist as playlist_class
 
 
 class SpotifyClient:
