@@ -41,28 +41,28 @@ ME_DESC = """[🐦 @KairoAmorim](https://twitter.com/KairoAmorim)
 [🐙 GitHub](https://github.com/kairo741)
 [🤙 Server do Bot](https://discord.gg/5d8eqqkC)"""
 
-SEXTA_DOS_CRIAS_MP4 = "files/sexta_dos_crias.mp4"
-SEXTA_DOS_CRIAS_SOUND_MP3 = "files/sexta_dos_crias_sound.mp3"
-SEXTA_DOS_CRIAS_GIF = "files/sexta_dos_crias_gif.gif"
-SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION = "files/sexta_dos_crias_complete_edition.mp4"
-SEXTA_DOS_CRIAS_MP4_ALTERNATIVE_EDITION = "files/sexta_dos_crias_alternative_edition.mp4"
+SEXTA_DOS_CRIAS_MP4 = "cogs/files/videos/sexta_dos_crias.mp4"
+SEXTA_DOS_CRIAS_SOUND_MP3 = "cogs/files/sounds/sexta_dos_crias_sound.mp3"
+SEXTA_DOS_CRIAS_GIF = "cogs/files/images/sexta_dos_crias_gif.gif"
+SEXTA_DOS_CRIAS_MP4_COMPLETE_EDITION = "cogs/files/videos/sexta_dos_crias_complete_edition.mp4"
+SEXTA_DOS_CRIAS_MP4_ALTERNATIVE_EDITION = "cogs/files/videos/sexta_dos_crias_alternative_edition.mp4"
 
-SHREK_SEXTA_FEIRA_MP4 = "files/shrek_gracas_a_deus_e_sexta_feira.mp4"
+SHREK_SEXTA_FEIRA_MP4 = "cogs/files/videos/shrek_gracas_a_deus_e_sexta_feira.mp4"
 
-URSO_DA_SEXTA_MP4 = "files/urso_da_sexta.mp4"
-URSO_DA_MAMAR_MP4 = "files/urso_dia_de_mamar.mp4"
-URSO_DA_PISEIRO_MP4 = "files/urso_dia_de_piseiro.mp4"
-URSO_DA_EX_MP4 = "files/urso_da_ex.mp4"
-ATXES_AD_OSRU_MP4 = "files/atxes_ad_osru.mp4"
-URSO_ESTOURADO_MP4 = "files/urso_estourado.mp4"
-URSO_DA_sexTA_MP4 = "files/urso_SEXta.mp4"
-URSO_REMASTER_MP4 = "files/urso_remaster_compressed.mp4"
+URSO_DA_SEXTA_MP4 = "cogs/files/videos/urso_da_sexta.mp4"
+URSO_DA_MAMAR_MP4 = "cogs/files/videos/urso_dia_de_mamar.mp4"
+URSO_DA_PISEIRO_MP4 = "cogs/files/videos/urso_dia_de_piseiro.mp4"
+URSO_DA_EX_MP4 = "cogs/files/videos/urso_da_ex.mp4"
+ATXES_AD_OSRU_MP4 = "cogs/files/videos/atxes_ad_osru.mp4"
+URSO_ESTOURADO_MP4 = "cogs/files/videos/urso_estourado.mp4"
+URSO_DA_sexTA_MP4 = "cogs/files/videos/urso_SEXta.mp4"
+URSO_REMASTER_MP4 = "cogs/files/videos/urso_remaster_compressed.mp4"
 
-ROCKERS_SEXTOU_MP4 = "files/rockers_sextou.mp4"
+ROCKERS_SEXTOU_MP4 = "cogs/files/videos/rockers_sextou.mp4"
 
-FRING_FRIDAY_MP4 = "files/fring_friday.mp4"
+FRING_FRIDAY_MP4 = "cogs/files/videos/fring_friday.mp4"
 
-HEXA_DOS_CRIAS_MP4 = "files/hexa_dos_crias_low_bitrate_compressed.mp4"
+HEXA_DOS_CRIAS_MP4 = "cogs/files/videos/hexa_dos_crias_low_bitrate_compressed.mp4"
 
 SEXTOU_LYRICS_GIF = "https://c.tenor.com/yenNqRV0M2oAAAAC/sexta-sexta-feira.gif"
 SEXTOU_HOMER_GIF = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG94MDhudW1qMmc4cm1qNGNuZHl4eGdiZm9qdngwajNjb3g2NzdqbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TBagQ2NpdI1vr3b05G/giphy.gif"
