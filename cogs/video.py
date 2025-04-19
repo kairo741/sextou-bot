@@ -1,4 +1,4 @@
-from random import choice
+from random import choices
 
 import discord
 from discord.ext import commands
@@ -34,10 +34,27 @@ class Video(commands.Cog):
     @commands.cooldown(1, 35, commands.BucketType.user)
     async def send_urso(self, context: commands.Context):
         await context.defer()
-        await context.send(file=discord.File(choice([constants.URSO_DA_SEXTA_MP4, constants.URSO_DA_MAMAR_MP4,
-                                                     constants.URSO_DA_PISEIRO_MP4, constants.URSO_DA_EX_MP4,
-                                                     constants.ATXES_AD_OSRU_MP4, constants.URSO_ESTOURADO_MP4,
-                                                     constants.URSO_DA_sexTA_MP4, constants.URSO_REMASTER_MP4])))
+
+        # Definindo os vídeos com raridades e mensagens
+        videos = [
+            (constants.URSO_DA_SEXTA_MP4, 50, "🐻‍❄️ Sextou"),
+            (constants.URSO_DA_MAMAR_MP4, 5, "🐻‍❄️🫦️ Mamouuu "),
+            (constants.URSO_DA_PISEIRO_MP4, 20, "💃🐻‍❄️🕺🐻‍❄️💃"),
+            (constants.URSO_DA_EX_MP4, 15, "🙂‍↔️"),
+            (constants.ATXES_AD_OSRU_MP4, 30, "noʇxǝS 🐻‍❄️"),
+            (constants.URSO_ESTOURADO_MP4, 30, "🔊🔊🔊🔊"),
+            (constants.URSO_DA_sexTA_MP4, 15, "🐻‍❄️ SEXtou"),
+            (constants.URSO_REMASTER_MP4, 10, "🐻‍❄️🐻‍❄️🐻‍❄️🐻‍❄️")
+        ]
+
+        # Separa os dados
+        video_options = [(v[0], v[2]) for v in videos]
+        weights = [v[1] for v in videos]
+
+        # Seleciona um vídeo
+        selected_video, message = choices(video_options, weights=weights, k=1)[0]
+
+        await context.send(message, file=discord.File(selected_video))
 
     @send_urso.error
     async def send_urso_error(self, context: commands.Context, error):
