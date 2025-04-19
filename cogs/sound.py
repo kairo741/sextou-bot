@@ -32,7 +32,6 @@ class Sound(commands.Cog):
                 if channel:
                     source = discord.FFmpegPCMAudio(file_name, executable=constants.FFMPEG_PATH)
                     channel.play(source)
-                    return True
                 else:
                     await context.send("Falha ao conectar ao canal de voz.")
             else:

@@ -1,18 +1,21 @@
 import datetime
-from random import choice, randint
+from random import choice
 
 import discord
-import requests
 from discord.ext import commands
+
+from utils import constants
 
 COMMAND_COUNTER = {}
 USER_COMMAND_COUNTER = {}
+
+
 class Stats(commands.Cog):
     def __init__(self, client):
         self.client = client
 
     @commands.hybrid_command(name="status_sextou", with_app_command=True,
-                           description="Mostra se a sexta está boa ou não...")
+                             description="Mostra se a sexta está boa ou não...")
     async def status_sextou(self, ctx: commands.Context, me=False):
         await ctx.defer()
         today = datetime.datetime.now()
@@ -65,6 +68,7 @@ class Stats(commands.Cog):
         embed.set_footer(text=footer_message)
 
         await ctx.send(embed=embed)
+
 
 async def setup(bot):
     """Função assíncrona para adicionar este cog ao bot."""

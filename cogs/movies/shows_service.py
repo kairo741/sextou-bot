@@ -34,6 +34,7 @@ class ShowsService:
             return movies
         except NameError:
             print(response_json)
+            return None
 
     def get_one_popular_movie_detailed(self):
         show_id = choice(self.get_popular_movies()).id
@@ -59,6 +60,7 @@ class ShowsService:
             return shows
         except NameError:
             print(response_json)
+            return None
 
     def get_one_popular_show_detailed(self):
         show_id = choice(self.get_popular_show()).id

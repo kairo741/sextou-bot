@@ -41,6 +41,7 @@ class SpotifyClient:
             return tracks
         except NameError:
             print(response_json)
+            return None
 
     def get_dj_ramons_albums(self):
         url = f"https://api.spotify.com/v1/artists/{'4TU1r1V7Xp6Ov2X2irfm3J'}/albums"
@@ -52,6 +53,7 @@ class SpotifyClient:
             return playlists
         except NameError:
             print(response_json)
+            return None
 
     def create_playlist(self, name):
         data = json.dumps({
@@ -73,8 +75,8 @@ class SpotifyClient:
     def populate_playlist(self, playlist, tracks):
         """Add tracks to a playlist.
 
-        :param playlist (Playlist): Playlist to which to add tracks
-        :param tracks (list of Track): Tracks to be added to playlist
+        :param playlist: Playlist to which to add tracks
+        :param tracks: Tracks to be added to playlist
         :return response: API response
         """
         track_uris = [track.create_spotify_uri() for track in tracks]
