@@ -1,7 +1,19 @@
-import os
-from distutils.util import strtobool
 import discord
 from discord.ext import commands
+import sys
+
+
+def is_debug():
+    gettrace = getattr(sys, 'gettrace', None)
+
+    if gettrace is None:
+        return False
+    else:
+        v = gettrace()
+        if v is None:
+            return False
+        else:
+            return True
 
 
 class OnMessageEvent(commands.Cog):
@@ -16,7 +28,7 @@ class OnMessageEvent(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command(self, context):
-        if strtobool(os.environ["DEBUG"]):
+        if is_debug():
             user = context.author
             command = context.command
             server = context.guild
