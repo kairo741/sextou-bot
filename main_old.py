@@ -6,7 +6,7 @@ from discord.ext import commands
 
 from cogs.movies import shows_service as show_service
 
-FFMPEG_PATH = os.path.join("files", "ffmpeg.exe")
+FFMPEG_PATH = os.path.join("cogs/files", "ffmpeg.exe")
 COMMAND_COUNTER = {}
 USER_COMMAND_COUNTER = {}
 client = commands.Bot(command_prefix=commands.when_mentioned_or("$ "), intents=discord.Intents.all(), help_command=None)

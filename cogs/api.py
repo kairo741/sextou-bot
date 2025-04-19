@@ -41,6 +41,7 @@ class ApiConsumer(commands.Cog):
                     thumbnail = random_event["pages"][0]["originalimage"]['source']
                     final_date = datetime.date(random_event["year"], month, day)
                     return random_event['text'], thumbnail, final_date
+                return None
             else:
                 return "Não encontrei eventos históricos de sexta-feira para hoje! 😢"
         else:
@@ -59,7 +60,7 @@ class ApiConsumer(commands.Cog):
         embed.set_image(url=thumbnail)
         await context.send(embed=embed)
 
-    # region Movies/Series
+    # region Movies/Shows
 
     @commands.hybrid_command(name="filme", with_app_command=True,
                              description="Envia uma sugestão de filme para assistir")
