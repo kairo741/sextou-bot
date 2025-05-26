@@ -64,7 +64,7 @@ class ApiConsumer(commands.Cog):
 
     @commands.hybrid_command(name="filme", with_app_command=True,
                              description="Envia uma sugestão de filme para assistir")
-    async def send_show(self, context: commands.Context):
+    async def send_movie(self, context: commands.Context):
         await context.defer()
         show = shows_service.get_one_popular_movie_detailed()
 
